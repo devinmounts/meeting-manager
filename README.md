@@ -8,7 +8,7 @@
 
 
 ## Component Structure
-![Component Structure](./public//component-tree.png)
+![Component Structure](./src/public/component-tree.png)
 
 ## Specs
 
