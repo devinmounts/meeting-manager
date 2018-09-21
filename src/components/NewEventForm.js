@@ -7,3 +7,5 @@ function NewEventForm() {
     </div>
   );
 }
+
+export default NewEventForm;

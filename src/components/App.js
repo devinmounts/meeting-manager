@@ -4,6 +4,9 @@ import Calendar from './Calendar';
 import SideNav from './SideNav';
 import TopNav from './TopNav';
 import PropTypes from 'prop-types';
+import { Switch, Route } from 'react-router-dom';
+import NewEventForm from './NewEventForm';
+
 
 class App extends Component {
   constructor(props) {
@@ -51,7 +54,10 @@ class App extends Component {
       <div className="App">
         <SideNav />
         <TopNav />
-        <Calendar userList={this.state.masterUserList}/>
+        <Switch>
+          <Route exact path='/' render={() =><Calendar userList={this.state.masterUserList}/>} />
+          <Route path='/neweventform' component={NewEventForm} />
+        </Switch>
       </div>
     );
   }
