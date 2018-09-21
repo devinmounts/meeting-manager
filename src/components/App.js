@@ -9,8 +9,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TopNav />
         <SideNav />
+        <TopNav />
         <Calendar />
       </div>
     );

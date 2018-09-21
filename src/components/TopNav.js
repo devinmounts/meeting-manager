@@ -2,10 +2,11 @@ import React from 'react';
 
 function TopNav(){
   let divStyle = {
-    width: '90%',
+    width: '87%',
     height: '200px',
-    border: 'solid black 2px',
-    float: 'right'
+    border: 'solid black .5px',
+    float: 'right',
+    backgroundColor: 'aqua'
   }
   return(
     <div style={divStyle}>
