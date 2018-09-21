@@ -30,25 +30,25 @@ function User(props){
           <span>{props.name}</span>
         </div>
         <div style={dayColumn}>
-          <span>Sunday</span>
+          <span>{props.schedule.sunday[0].event}: {props.schedule.sunday[0].time} </span>
         </div>
         <div style={dayColumn}>
-          <span>Monday</span>
+          <span>{props.schedule.monday[0].event}: {props.schedule.monday[0].time} </span>
         </div>
         <div style={dayColumn}>
-          <span>Tuesday</span>
+          <span>{props.schedule.tuesday[0].event}: {props.schedule.tuesday[0].time} </span>
         </div>
         <div style={dayColumn}>
-          <span>Wednesday</span>
+          <span>{props.schedule.wednesday[0].event}: {props.schedule.wednesday[0].time} </span>
         </div>
         <div style={dayColumn}>
-          <span>Thursday</span>
+          <span>{props.schedule.thursday[0].event}: {props.schedule.thursday[0].time} </span>
         </div>
         <div style={dayColumn}>
-          <span>Friday</span>
+          <span>{props.schedule.friday[0].event}: {props.schedule.friday[0].time} </span>
         </div>
         <div style={dayColumn}>
-          <span>Saturday</span>
+          <span>{props.schedule.saturday[0].event}: {props.schedule.saturday[0].time} </span>
         </div>
       </div>
     </div>
