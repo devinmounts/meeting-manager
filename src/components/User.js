@@ -1,19 +1,7 @@
 import React from 'react';
-import UserList from './UserList';
 import PropTypes from 'prop-types';
 
-function Calendar(props){
-  let divStyle = {
-    width: '87%',
-    backgroundColor: 'aqua',
-    border: 'solid black .5px',
-    display: 'inline-block',
-    float: 'right',
-    height: 'calc(60vh - 0px)',
-    position: 'relative',
-    overflow: 'hidden',
-  }
-
+function User(props){
   let weekRow = {
     width: '100%'
   }
@@ -36,10 +24,10 @@ function Calendar(props){
     backgroundColor: 'orange'
   }
   return(
-    <div style={divStyle}>
+    <div>
       <div style={weekRow} >
         <div style={userColumn}>
-          <span>Users</span>
+          <span>{props.name}</span>
         </div>
         <div style={dayColumn}>
           <span>Sunday</span>
@@ -63,13 +51,12 @@ function Calendar(props){
           <span>Saturday</span>
         </div>
       </div>
-      <UserList userList={props.userList}/>
     </div>
   );
-
-Calendar.propTypes = {
-  userList: PropTypes.object
 }
 
+User.propTypes = {
+  name: PropTypes.string,
+  schedule: PropTypes.object
 }
-export default Calendar;
+export default User;
