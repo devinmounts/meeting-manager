@@ -20,16 +20,27 @@ function Calendar(){
 
   let dayColumn = {
     display: 'inline-block',
-    width: '14%',
+    width: '11%',
     position: 'relative',
-    height: '100%',
+    height: '5%',
     border: 'solid black .5px',
     backgroundColor: 'yellow'
+  }
 
+  let userColumn = {
+    display: 'inline-block',
+    width: '15%',
+    position: 'relative',
+    height: '5%',
+    border: 'solid black .5px',
+    backgroundColor: 'yellow'
   }
   return(
     <div style={divStyle}>
       <div style={weekRow} >
+        <div style={userColumn}>
+          <span>Users</span>
+        </div>
         <div style={dayColumn}>
           <span>Sunday</span>
         </div>
