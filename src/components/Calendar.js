@@ -44,6 +44,14 @@ class Calendar extends React.Component {
     return firstDay;
   }
 
+  MonthNav = () => {
+    return (
+      <span className="label-Month">
+        {this.month()}
+      </span>
+    );
+  }
+
 
   render(){
 
@@ -77,7 +85,7 @@ class Calendar extends React.Component {
 
     let blanks = [];
     for (let i = 0; i < this.firstDayOfMonth(); i++) {
-      blanks.push(<td key={i * 2} >
+      blanks.push(<td key={i * 2} className="emptySlot">
         {""}
         </td>
       )
@@ -85,8 +93,10 @@ class Calendar extends React.Component {
 
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
+      let className = (d == this.currentDay() ? 'day current-day' : 'day');
+      let selectedClass = (d == this.state.selectedDay ? 'selected-day' : '')
       daysInMonth.push(
-        <td key={d}>
+        <td key={d} className={className + selectedClass}>
           <span>{d}</span>
         </td>
       );
