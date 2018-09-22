@@ -1,8 +1,15 @@
 import React from 'react';
 import UserList from './UserList';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 
-function Calendar(props){
+class Calendar extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      dateContext: moment(),
+    }
+  }
   let divStyle = {
     width: '87%',
     backgroundColor: 'aqua',
