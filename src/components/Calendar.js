@@ -2,81 +2,97 @@ import React from 'react';
 import UserList from './UserList';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import '../styles/Calendar/calendar.css';
 
 class Calendar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
       dateContext: moment(),
+      today: moment(),
+      showMonthPopup: false,
+      selectedDay: null
     }
   }
-  let divStyle = {
-    width: '87%',
-    backgroundColor: 'aqua',
-    border: 'solid black .5px',
-    display: 'inline-block',
-    float: 'right',
-    height: 'calc(60vh - 0px)',
-    position: 'relative',
-    overflow: 'hidden',
+
+  weekdays = moment.weekdays();
+  months = moment.months();
+
+  year = () => {
+    return this.state.dateContext.format('Y');
   }
 
-  let weekRow = {
-    width: '100%'
+  month = () => {
+    return this.state.dateContext.format('MMMM');
   }
 
-  let dayColumn = {
-    display: 'inline-block',
-    width: '11%',
-    position: 'relative',
-    height: '5%',
-    border: 'solid black .5px',
-    backgroundColor: 'yellow'
+  daysInMonth = () => {
+    return this.state.dateContext.daysInMonth();
   }
 
-  let userColumn = {
-    display: 'inline-block',
-    width: '15%',
-    position: 'relative',
-    height: '5%',
-    border: 'solid black .5px',
-    backgroundColor: 'orange'
+  currentDate = () => {
+    return this.state.dateContext.get("date");
   }
-  return(
-    <div style={divStyle}>
-      <div style={weekRow} >
-        <div style={userColumn}>
-          <span>Users</span>
-        </div>
-        <div style={dayColumn}>
-          <span>Sunday</span>
-        </div>
-        <div style={dayColumn}>
-          <span>Monday</span>
-        </div>
-        <div style={dayColumn}>
-          <span>Tuesday</span>
-        </div>
-        <div style={dayColumn}>
-          <span>Wednesday</span>
-        </div>
-        <div style={dayColumn}>
-          <span>Thursday</span>
-        </div>
-        <div style={dayColumn}>
-          <span>Friday</span>
-        </div>
-        <div style={dayColumn}>
-          <span>Saturday</span>
-        </div>
+
+  currentDay = () => {
+    return this.state.dateContext.format("D");
+  }
+
+  firstDayOfMonth = () => {
+    let newDateContext = this.state.dateContext;
+    let firstDay = moment(newDateContext).startOf('month').format('d');
+    return firstDay;
+  }
+
+
+  render(){
+
+    let weekRow = {
+      width: '100%'
+    }
+
+    let dayColumn = {
+      display: 'inline-block',
+      width: '11%',
+      position: 'relative',
+      height: '5%',
+      border: 'solid black .5px',
+      backgroundColor: 'yellow'
+    }
+
+    let userColumn = {
+      display: 'inline-block',
+      width: '15%',
+      position: 'relative',
+      height: '5%',
+      border: 'solid black .5px',
+      backgroundColor: 'orange'
+    }
+
+    let weekdays = this.weekdays.map((day) => {
+      return(
+        <td key={day}>{day}</td>
+      );
+    })
+    return(
+      <div className='calendar-container'>
+        <table className='calendar'>
+          <thead>
+            <tr className='calendar-header'>
+              <td>
+                Month
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {weekdays}
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <UserList userList={props.userList}/>
-    </div>
-  );
-
-Calendar.propTypes = {
-  userList: PropTypes.object
-}
+    );
+  }
 
 }
 export default Calendar;
