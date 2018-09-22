@@ -73,6 +73,50 @@ class Calendar extends React.Component {
       return(
         <td key={day}>{day}</td>
       );
+    });
+
+    let blanks = [];
+    for (let i = 0; i < this.firstDayOfMonth(); i++) {
+      blanks.push(<td key={i * 2} >
+        {""}
+        </td>
+      )
+    }
+
+    let daysInMonth = [];
+    for (let d = 1; d <= this.daysInMonth(); d++) {
+      daysInMonth.push(
+        <td key={d}>
+          <span>{d}</span>
+        </td>
+      );
+    }
+
+    let totalSlots = [...blanks, ...daysInMonth];
+    let rows = [];
+    let cells = [];
+
+    totalSlots.forEach((row, i) => {
+      if ((i % 7) !== 0) {
+        cells.push(row);
+      } else {
+        let insertRow = cells.slice();
+        rows.push(insertRow);
+        cells = [];
+        cells.push(row)
+      }
+      if (i === totalSlots.length -1) {
+        let insertRow = cells.slice();
+        rows.push(insertRow);
+      }
+    });
+
+    let trElems = rows.map((d, i) => {
+      return (
+        <tr key={i*3}>
+          {d}
+        </tr>
+      );
     })
     return(
       <div className='calendar-container'>
@@ -80,7 +124,10 @@ class Calendar extends React.Component {
           <thead>
             <tr className='calendar-header'>
               <td>
-                Month
+                <this.MonthNav />
+              </td>
+              <td className='nav-month'>
+
               </td>
             </tr>
           </thead>
@@ -88,6 +135,7 @@ class Calendar extends React.Component {
             <tr>
               {weekdays}
             </tr>
+            {trElems}
           </tbody>
         </table>
       </div>
